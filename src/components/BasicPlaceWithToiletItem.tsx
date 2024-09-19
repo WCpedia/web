@@ -120,7 +120,7 @@ const BasicPlaceWithToiletItem: React.FC<PlaceInfoProps> = ({ place, onClick }) 
           " " +
           place.region.district +
           " " +
-          place.detailAddress ?? "주소 정보 없음"}
+          place.detailAddress}
       </AddressText>
 
       {renderToiletInfo(place.toiletInfo)}
