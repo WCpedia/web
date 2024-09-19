@@ -180,12 +180,6 @@ const Main: React.FC = () => {
 
       overlay.setMap(mapRef.current);
 
-      // 지도 중심을 선택된 가게의 위치로 부드럽게 이동
-      mapRef.current.panTo(new window.naver.maps.LatLng(selectedPlace.y, selectedPlace.x), {
-        duration: 700,
-        easing: "easeOutCubic",
-      });
-
       setMarkers([marker]);
       setCustomOverlay(overlay);
     }
@@ -193,6 +187,18 @@ const Main: React.FC = () => {
 
   const handlePlaceClick = (place: IPlace) => {
     setSelectedPlace(place);
+    // 바텀시트 크기 조정 후 지도 중심 이동
+    const placeDetailElement = document.getElementById("bottom-sheet-content");
+    if (placeDetailElement) {
+      const height = placeDetailElement.offsetHeight;
+      setDetailHeight(height * 1.1 + 20);
+    }
+    if (mapRef.current) {
+      mapRef.current.panTo(new window.naver.maps.LatLng(place.y, place.x), {
+        duration: 700,
+        easing: "easeOutCubic",
+      });
+    }
   };
 
   useEffect(() => {
