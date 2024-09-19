@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+  <defs>
+    <linearGradient id="halfFilledStar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="50%" style="stop-color:#FEC52B; stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFFFFF; stop-opacity:0" />
+    </linearGradient>
+  </defs>
+  <path d="m221.043-103.5 68.348-294.63L60.63-596.457l301.87-25.956L480-900.327l117.5 277.914 301.87 25.956L670.609-398.13l68.348 294.63L480-259.913 221.043-103.5Z" fill="url(#halfFilledStar)"/>
+</svg>
