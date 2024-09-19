@@ -194,10 +194,7 @@ const Main: React.FC = () => {
       setDetailHeight(height * 1.1 + 20);
     }
     if (mapRef.current) {
-      mapRef.current.panTo(new window.naver.maps.LatLng(place.y, place.x), {
-        duration: 700,
-        easing: "easeOutCubic",
-      });
+      mapRef.current.setCenter(new window.naver.maps.LatLng(place.y, place.x));
     }
   };
 
