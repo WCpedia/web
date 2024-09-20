@@ -2,7 +2,7 @@ import { IApiServerResponseBody } from "../common/interface/interface";
 import { PaginatedResponse } from "../common/type/type";
 import { fetchToServer } from "./api";
 import { IPaginationParams } from "./interface/common-api.interface";
-import { IPlace } from "./interface/place.interface";
+import { IPlace, ISearchResultItem } from "./interface/place.interface";
 
 const ENV = import.meta.env;
 
@@ -26,6 +26,26 @@ export class PlaceApi {
 
       return await response.json();
     } catch (error) {
+      throw error;
+    }
+  }
+
+  static async searchPlacesByTerm(
+    searchTerm: string
+  ): Promise<IApiServerResponseBody<ISearchResultItem[]>> {
+    try {
+      const response = await fetchToServer(`search/places?value=${searchTerm}`, {
+        method: "GET",
+      });
+
+      const responseBody = await response.json();
+      if (responseBody.statusCode !== 200) {
+        throw new Error(responseBody.statusCode);
+      }
+      return responseBody;
+    } catch (error) {
+      console.log("searchPlacesByTerm", error);
+
       throw error;
     }
   }
