@@ -8,6 +8,8 @@ import { usePlacesWithToilets } from "../hooks/UsePlaceWithToilets";
 import BasicPlaceWithToiletItem from "../components/BasicPlaceWithToiletItem";
 import { IPlace } from "../apis/interface/place.interface";
 import PlaceDetail from "../components/PlaceDetail";
+import DummyInput from "../components/SearchInput";
+import { BackButton } from "../components/BackButton";
 
 declare global {
   interface Window {
@@ -64,7 +66,7 @@ class CustomOverlay extends window.naver.maps.OverlayView {
   }
 }
 
-const Main: React.FC = () => {
+const MainScreen: React.FC = () => {
   const [mapHeight, setMapHeight] = useState(70);
   const mapRef = useRef<any>(null);
   const loadingRef = useRef<HTMLDivElement>(null);
@@ -180,12 +182,6 @@ const Main: React.FC = () => {
 
       overlay.setMap(mapRef.current);
 
-      // 지도 중심을 선택된 가게의 위치로 부드럽게 이동
-      mapRef.current.panTo(new window.naver.maps.LatLng(selectedPlace.y, selectedPlace.x), {
-        duration: 700,
-        easing: "easeOutCubic",
-      });
-
       setMarkers([marker]);
       setCustomOverlay(overlay);
     }
@@ -193,6 +189,15 @@ const Main: React.FC = () => {
 
   const handlePlaceClick = (place: IPlace) => {
     setSelectedPlace(place);
+    // 바텀시트 크기 조정 후 지도 중심 이동
+    const placeDetailElement = document.getElementById("bottom-sheet-content");
+    if (placeDetailElement) {
+      const height = placeDetailElement.offsetHeight;
+      setDetailHeight(height * 1.1 + 20);
+    }
+    if (mapRef.current) {
+      mapRef.current.setCenter(new window.naver.maps.LatLng(place.y, place.x));
+    }
   };
 
   useEffect(() => {
@@ -216,6 +221,8 @@ const Main: React.FC = () => {
 
   return (
     <Screen>
+      {selectedPlace && <BackButton onClick={handleCloseDetail} />}
+      {!selectedPlace && <DummyInput />}
       <NaverMapDiv id="naverMap" height={mapHeight} />
       <BottomSheet
         isOpen={true}
@@ -256,7 +263,7 @@ const Main: React.FC = () => {
   );
 };
 
-export default Main;
+export default MainScreen;
 
 const NaverMapDiv = styled.div<{ height: number }>`
   width: 100%;

@@ -61,11 +61,19 @@ const BottomSheet: React.FC<BottomSheetProps> = ({
     }
   };
 
-  const handleTouchStart = (e: React.TouchEvent) => handleStart(e.touches[0].clientY);
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.target === sheetRef.current?.querySelector("#bottom-sheet-header")) {
+      handleStart(e.touches[0].clientY);
+    }
+  };
   const handleTouchMove = (e: React.TouchEvent) => handleMove(e.touches[0].clientY);
   const handleTouchEnd = () => handleEnd();
 
-  const handleMouseDown = (e: React.MouseEvent) => handleStart(e.clientY);
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (e.target === sheetRef.current?.querySelector("#bottom-sheet-header")) {
+      handleStart(e.clientY);
+    }
+  };
   const handleMouseMove = (e: React.MouseEvent) => handleMove(e.clientY);
   const handleMouseUp = () => handleEnd();
 
@@ -105,7 +113,7 @@ const BottomSheet: React.FC<BottomSheetProps> = ({
       onTouchEnd={handleTouchEnd}
       onMouseDown={handleMouseDown}
     >
-      <BottomSheetHeader>
+      <BottomSheetHeader id="bottom-sheet-header">
         <BottomSheetHandle />
       </BottomSheetHeader>
 
@@ -129,8 +137,9 @@ const BottomSheetContainer = styled.div<{ height: number; minHeight: number; max
   max-height: ${(props) => props.maxHeight}px;
   touch-action: none;
   user-select: none;
+  max-width: 480px;
+  margin: 0 auto;
 `;
-
 const BottomSheetHeader = styled.div`
   padding: 10px;
   text-align: center;
