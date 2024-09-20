@@ -93,7 +93,7 @@ button:focus-visible {
 
 .screen {
   width: 100%;
-  max-width: 100%;
+  max-width: 480px;
   margin: 0;
   height: 100vh;
   display: flex;
@@ -120,6 +120,10 @@ button:focus-visible {
 .col {
   flex: 1;
   padding: 10px 0;
+}
+
+.bottom-sheet {
+  max-width: 480px;
 }
 
 /* 미디어 쿼리 수정 */
