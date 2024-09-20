@@ -26,7 +26,9 @@ const SearchResults: React.FC<{ results: ISearchResultItem[] }> = ({ results }) 
             <PlaceName>{result.name}</PlaceName>
             <CategoryText>{result.placeCategory.depth1.name}</CategoryText>
           </PlaceNameContainer>
-          <DetailAddress>{result.detailAddress}</DetailAddress>
+          <DetailAddress>
+            {result.region.administrativeDistrict} {result.region.district} {result.detailAddress}
+          </DetailAddress>
           <Telephone>{result.telephone}</Telephone>
         </ResultItem>
       ))}
