@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { ISearchResultItem } from "../apis/interface/place.interface";
 import { ColorPalette } from "../common/constants/const";
 import Modal from "react-modal";
+import { WindowSize } from "../constants/const";
 
 const SearchResults: React.FC<{ results: ISearchResultItem[] }> = ({ results }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -51,7 +52,7 @@ const customStyles = {
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     backgroundColor: "white",
-    width: "75%",
+    width: WindowSize.width * 0.75,
     height: "25%",
   },
   overlay: {
