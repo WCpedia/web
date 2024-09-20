@@ -137,8 +137,9 @@ const BottomSheetContainer = styled.div<{ height: number; minHeight: number; max
   max-height: ${(props) => props.maxHeight}px;
   touch-action: none;
   user-select: none;
+  max-width: 480px;
+  margin: 0 auto;
 `;
-
 const BottomSheetHeader = styled.div`
   padding: 10px;
   text-align: center;

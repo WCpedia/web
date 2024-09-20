@@ -8,6 +8,8 @@ import { usePlacesWithToilets } from "../hooks/UsePlaceWithToilets";
 import BasicPlaceWithToiletItem from "../components/BasicPlaceWithToiletItem";
 import { IPlace } from "../apis/interface/place.interface";
 import PlaceDetail from "../components/PlaceDetail";
+import DummyInput from "../components/SearchInput";
+import { BackButton } from "../components/BackButton";
 
 declare global {
   interface Window {
@@ -64,7 +66,7 @@ class CustomOverlay extends window.naver.maps.OverlayView {
   }
 }
 
-const Main: React.FC = () => {
+const MainScreen: React.FC = () => {
   const [mapHeight, setMapHeight] = useState(70);
   const mapRef = useRef<any>(null);
   const loadingRef = useRef<HTMLDivElement>(null);
@@ -219,6 +221,8 @@ const Main: React.FC = () => {
 
   return (
     <Screen>
+      {selectedPlace && <BackButton onClick={handleCloseDetail} />}
+      {!selectedPlace && <DummyInput />}
       <NaverMapDiv id="naverMap" height={mapHeight} />
       <BottomSheet
         isOpen={true}
@@ -259,7 +263,7 @@ const Main: React.FC = () => {
   );
 };
 
-export default Main;
+export default MainScreen;
 
 const NaverMapDiv = styled.div<{ height: number }>`
   width: 100%;

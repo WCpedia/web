@@ -10,7 +10,6 @@ import ChildToiletIcon from "../assets/child200.svg";
 import EmergencyBellIcon from "../assets/emergency-bell.svg";
 // import SupportBarsIcon from "../assets/support_bars.svg";
 import PowderRoomIcon from "../assets/powderRoom200.svg";
-import BackIcon from "../assets/arrow.svg";
 import Divider from "./Divider";
 
 // 다른 아이콘들도 비슷하게 임포트하세요
@@ -110,12 +109,6 @@ const PlaceDetail: React.FC<PlaceDetailProps> = ({ place, onClose }) => {
 
   return (
     <Container id="place-detail">
-      <BackButton onClick={onClose}>
-        <FeatureIcon
-          style={{ marginTop: "2px", marginLeft: "5px", width: "20px", height: "20px" }}
-          src={BackIcon}
-        />
-      </BackButton>
       <Title>{place.name}</Title>
       <CategoryText>
         {place.placeCategory.depth1.name} &gt; {place.placeCategory.depth2.name}
@@ -141,24 +134,6 @@ const Container = styled.div`
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-`;
-
-const BackButton = styled.button`
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  background-color: white;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  border: 1px solid #f0f0f0;
 `;
 
 const Title = styled.h2`
