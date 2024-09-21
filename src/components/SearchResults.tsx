@@ -88,7 +88,7 @@ const PlaceNameContainer = styled.div`
   align-items: center;
 `;
 
-const PlaceName = styled.div`
+const PlaceName = styled.p`
   font-size: 18px;
   font-weight: bold;
   margin-right: 8px;
@@ -98,7 +98,7 @@ const PlaceName = styled.div`
   max-width: 100%;
 `;
 
-const CategoryText = styled.div`
+const CategoryText = styled.p`
   font-size: 12px;
   color: #666;
   white-space: nowrap;
