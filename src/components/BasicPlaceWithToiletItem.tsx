@@ -141,6 +141,7 @@ const PlaceNameContainer = styled.div`
 `;
 
 const PlaceName = styled.p`
+  color: #000000;
   font-size: 18px;
   font-weight: bold;
   margin-right: 8px;
