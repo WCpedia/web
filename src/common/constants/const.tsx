@@ -13,6 +13,7 @@ export interface IFacilityFeature {
 }
 
 export const ColorPalette = {
+  White: "#fff",
   Black: "#000",
   DarkGray: "#666",
   Gray: "#ddd",
