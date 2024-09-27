@@ -93,3 +93,13 @@ export interface IToiletInfo {
     accessible: boolean;
   };
 }
+
+export interface ISearchResultItem {
+  id: number;
+  kakaoId: string;
+  name: string;
+  detailAddress: string;
+  telephone: string;
+  placeCategory: IPlaceCategory;
+  region: IRegion;
+}

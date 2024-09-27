@@ -8,7 +8,7 @@ import { usePlacesWithToilets } from "../hooks/UsePlaceWithToilets";
 import BasicPlaceWithToiletItem from "../components/BasicPlaceWithToiletItem";
 import { IPlace } from "../apis/interface/place.interface";
 import PlaceDetail from "../components/PlaceDetail";
-import DummyInput from "../components/SearchInput";
+import DummyInput from "../components/DummySearchInput";
 import { BackButton } from "../components/BackButton";
 
 declare global {
@@ -213,10 +213,10 @@ const MainScreen: React.FC = () => {
 
   const handleCloseDetail = useCallback(() => {
     setSelectedPlace(null);
-    // 스크롤 위치를 맨 위로 초기화
-    if (loadingRef.current) {
-      loadingRef.current.scrollIntoView({ behavior: "smooth" });
-    }
+    // // 스크롤 위치를 맨 위로 초기화
+    // if (loadingRef.current) {
+    //   loadingRef.current.scrollIntoView({ behavior: "smooth" });
+    // }
   }, []);
 
   return (

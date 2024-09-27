@@ -11,3 +11,11 @@ export interface IFacilityFeature {
   icon: JSX.Element;
   exclusiveWith?: string;
 }
+
+export const ColorPalette = {
+  White: "#fff",
+  Black: "#000",
+  DarkGray: "#666",
+  Gray: "#ddd",
+  LightGray: "#f0f0f0",
+};

@@ -11,6 +11,7 @@ import EmergencyBellIcon from "../assets/emergency-bell.svg";
 // import SupportBarsIcon from "../assets/support_bars.svg";
 import PowderRoomIcon from "../assets/powderRoom200.svg";
 import Divider from "./Divider";
+import { ColorPalette } from "../common/constants/const";
 
 // 다른 아이콘들도 비슷하게 임포트하세요
 interface PlaceDetailProps {
@@ -116,7 +117,7 @@ const PlaceDetail: React.FC<PlaceDetailProps> = ({ place, onClose }) => {
       <Address>
         {place.region.administrativeDistrict} {place.region.district} {place.detailAddress}
       </Address>
-      <Divider margin="10px -20px" color="#d0d0d0" />
+      <Divider margin="10px -20px" color={ColorPalette.DarkGray} />
       {place.toiletInfo.map((info, index) => (
         <React.Fragment key={index}>
           {renderToiletInfo(info)}
